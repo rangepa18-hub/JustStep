@@ -1095,6 +1095,10 @@
                 if (saved) {
                     const parsed = JSON.parse(saved);
                     this.data = { ...this.data, ...parsed };
+                    // Ensure statsView exists (for users upgrading from old version)
+                    if (!this.data.currentView.statsView) {
+                        this.data.currentView.statsView = 'week';
+                    }
                 }
             },
 
